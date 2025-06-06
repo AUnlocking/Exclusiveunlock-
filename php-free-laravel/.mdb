@@ -1,0 +1,11 @@
+{
+  "projectName": "php-free-laravel",
+  "meta": {
+    "type": "backend",
+    "starter": "php-free-laravel"
+  },
+  "backend": {
+    "platform": "php-laravel"
+  },
+  "hash": "77781adf"
+}
