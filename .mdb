@@ -1,0 +1,10 @@
+{
+  "projectName": "exclusive-unlock",
+  "meta": {
+    "type": "backend"
+  },
+  "backend": {
+    "platform": "php7.4"
+  },
+  "hash": "e772ca49"
+}
