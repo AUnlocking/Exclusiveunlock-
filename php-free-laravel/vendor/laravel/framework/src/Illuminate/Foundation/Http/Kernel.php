@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\InteractsWithTime;
 use InvalidArgumentException;
 use Throwable;
-use Illuminate\Console\Scheduling\Schedule;
-use App\Console\Commands\ConsultarPixStatus;
-
-
 
 class Kernel implements KernelContract
 {
@@ -73,10 +69,7 @@ class Kernel implements KernelContract
      *
      * @deprecated
      */
-    protected $routeMiddleware = [
-        'admin' => \App\Http\Middleware\AdminMiddleware::class,
-        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-    ];
+    protected $routeMiddleware = [];
 
     /**
      * The application's middleware aliases.
@@ -640,21 +633,4 @@ class Kernel implements KernelContract
 
         return $this;
     }
-    
-    
-    
-    
-    protected $commands = [
-    Commands\CheckIMEIOrdersStatusCommand::class,
-    ConsultarPixStatus::class,
-];
-
-protected function schedule(Schedule $schedule)
-{
-    $schedule->command('orders:update')->everyFiveMinutes();
-    $schedule->command('pix:consultar-status')->everyThirtyMinutes();
-    
-       
-    
-}
 }
