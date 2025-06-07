@@ -1,454 +1,323 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ExclusiveUnlock Bootstrap</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport responsivo -->
+    <title>BR Server</title>
+    
+    <!-- Incluir Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Incluir Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Incluir Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Incluir Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        .header-top {
-            background-color: #f8f9fa;
-            padding: 0.5rem 0;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Cor de fundo suave */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Garante que o conteúdo ocupe toda a altura da viewport */
         }
-
-        .header-middle {
-            background-color: #fff;
-            padding: 1rem 0;
-            border-bottom: 1px solid #e9ecef;
+        header {
+            background-color: #343a40; /* Cor de fundo do cabeçalho */
+            color: #ffffff; /* Cor do texto no cabeçalho */
+            padding: 15px 0;
+            border-bottom: 1px solid #dee2e6; /* Adiciona uma borda suave na parte inferior do cabeçalho */
         }
-
-        .header-bottom {
-            background-color: #343a40;
-            padding: 0.5rem 0;
+        .carousel {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
         }
-
-        .navbar-products .nav-link {
-            color: #fff !important;
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
         }
-
-        .navbar-products .nav-link:hover {
-            color: #ffc107 !important;
+        .carousel-track img {
+            width: 100%; /* Ajusta a largura para ocupar 100% do container */
+            height: auto; /* Altura ajustada automaticamente para manter a proporção */
         }
-
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 0.375rem;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-            z-index: 1000;
-            max-height: 300px;
-            overflow-y: auto;
-            display: none;
+        .navbar {
+            justify-content: space-between; /* Alinha os itens do navbar */
         }
-
-        .search-results.show {
-            display: block;
+        .navbar-brand {
+            margin-right: auto; /* Empurra a marca para a esquerda */
         }
-
-        .search-results li {
-            list-style: none;
-            padding: 0.5rem 1rem;
-            border-bottom: 1px solid #f1f1f1;
+        .buttons .btn {
+            background-color: #007bff; /* Cor de fundo azul para botões */
+            border-color: #007bff; /* Cor da borda azul */
+            color: #ffffff; /* Cor do texto dos botões */
         }
-
-        .search-results li:last-child {
-            border-bottom: none;
+        .buttons .btn:hover {
+            background-color: #0056b3; /* Cor de fundo azul mais escura ao passar o mouse */
+            border-color: #0056b3; /* Cor da borda azul mais escura ao passar o mouse */
         }
-
-        .search-results a {
-            text-decoration: none;
-            color: #333;
+        .social-icons {
+            text-align: center;
+            margin-top: auto; /* Faz com que os ícones fiquem no final da página */
+            margin-bottom: 20px; /* Espaçamento para o rodapé */
         }
-
-        .search-results a:hover {
-            color: #0d6efd;
-        }
-
-        .flag {
-            width: 20px;
-            height: 15px;
+        .social-icons a {
             display: inline-block;
-            background-size: cover;
-            margin-right: 0.5rem;
+            margin: 0 10px;
+            color: #343a40;
+            font-size: 24px;
+        }
+        .social-icons a:hover {
+            opacity: 0.8;
+        }
+        .message-container {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 20px; /* Espaçamento para o rodapé */
+        }
+        .message {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 100%; /* Garante que todos os containers de mensagem tenham a mesma altura */
+        }
+        footer {
+            background-color: #343a40; /* Cor de fundo do rodapé */
+            color: #ffffff; /* Cor do texto no rodapé */
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            border-top: 1px solid #dee2e6; /* Adiciona uma borda suave na parte superior do rodapé */
+        }
+        .footer-icons {
+            margin-top: 20px; /* Espaçamento para os ícones */
+            margin-bottom: 20px; /* Espaçamento para o rodapé */
+        }
+        .modal-content {
+            background-color: #343a40; /* Fundo escuro */
+            color: #ffffff; /* Texto branco */
+            border-radius: 10px; /* Borda arredondada */
+        }
+        .modal-header {
+            border-bottom: 1px solid #454d55; /* Bordas mais escuras */
+        }
+        .modal-footer {
+            border-top: 1px solid #454d55; /* Bordas mais escuras */
+        }
+        .modal-body {
+            padding: 30px; /* Espaçamento interno */
+        }
+        .modal-title {
+            color: #ffffff; /* Texto branco */
         }
 
-        .cursor-pointer {
-            cursor: pointer;
+        .modal-dialog {
+            margin-top: 100px; /* Ajuste a margem superior para centralizar verticalmente */
         }
     </style>
-</head>
-
 <body>
-    <header>
-        <!-- Header Top -->
-        <div class="header-top d-none d-lg-block">
-            <div class="container">
-                <nav class="nav align-items-center justify-content-between">
-                    <div class="d-flex">
-                        <span class="nav-link text-muted">
-                            <i class="fas fa-phone"></i> 9999999999
-                        </span>
-                        <span class="nav-link text-muted">
-                            <i class="fas fa-envelope"></i> contactus@yoursite.com
-                        </span>
-                    </div>
-
-                    <div class="d-flex">
-                        <!-- Currency Dropdown -->
-                        <div class="dropdown">
-                            <button class="btn btn-link nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                $ <i class="fas fa-chevron-down"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" onclick="setCurrencyTo(1)">$</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="setCurrencyTo(2)">RM</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Language Dropdown -->
-                        <div class="dropdown">
-                            <button class="btn btn-link nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="flag flag-gb"></span> <i class="fas fa-chevron-down"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="?selectlanguage=English&lcode=GB">
-                                        <span class="flag flag-gb"></span> English</a></li>
-                                <li><a class="dropdown-item" href="?selectlanguage=Spanish&lcode=ES">
-                                        <span class="flag flag-es"></span> Spanish</a></li>
-                                <li><a class="dropdown-item" href="?selectlanguage=French&lcode=FR">
-                                        <span class="flag flag-fr"></span> French</a></li>
-                                <li><a class="dropdown-item" href="?selectlanguage=German&lcode=DE">
-                                        <span class="flag flag-de"></span> German</a></li>
-                                <li><a class="dropdown-item" href="?selectlanguage=Chinese&lcode=CN">
-                                        <span class="flag flag-cn"></span> Chinese</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-
-        <!-- Header Middle -->
-        <div class="header-middle position-relative">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <a class="navbar-brand" href="#"> ExclusiveUnlock </a>
-
-                    <div class="d-none d-lg-block">
-                        <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="./index">Home</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Reseller Pricing <i class="fas fa-chevron-down"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="./resellerpricing/imei">IMEI Service</a></li>
-                                    <li><a class="dropdown-item" href="./resellerpricing/server">Server Service</a></li>
-                                    <li><a class="dropdown-item" href="./resellerpricing/remote">Remote Service</a></li>
-                                    <li><a class="dropdown-item" href="./resellerpricing/file">File Service</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./register">Registration</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="d-flex align-items-center">
-                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">
-                            <i class="fas fa-lock"></i> Login
-                        </button>
-                    </div>
-                </nav>
-
-                <!-- Offcanvas Mobile Menu -->
-                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="./index">Home</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Reseller Pricing
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="./resellerpricing/imei">IMEI Service</a></li>
-                                    <li><a class="dropdown-item" href="./resellerpricing/server">Server Service</a></li>
-                                    <li><a class="dropdown-item" href="./resellerpricing/remote">Remote Service</a></li>
-                                    <li><a class="dropdown-item" href="./resellerpricing/file">File Service</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./register">Registration</a>
-                            </li>
-                        </ul>
-                    </div>
+    
+<div>
+ 
+    <!-- Top Bar -->
+    <div class="bg-gray-700 text-sm py-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-4 lg:px-2">
+            <div class="flex justify-between items-center">
+                <div>
+                    <span>💻 <a href="mailto:contato@brserver.tech" class="underline text-blue-400 hover:text-blue-600">contato@brserver.tech</a></span>
+                </div>
+                <div>
+                    <span> 📲 <a href="https://wa.me/5534999442627" class="underline text-blue-400 hover:text-blue-600">+55(34)999442627</a></span>
                 </div>
             </div>
         </div>
-
-        <!-- Header Bottom -->
-        <div class="header-bottom position-relative">
-            <div class="container">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-none d-lg-block flex-grow-1 me-3">
-                        <nav class="nav navbar-products">
-                            <div class="dropdown">
-                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span>IMEI Services</span> <i class="fas fa-chevron-down"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="./cart/group/1/service/imei/groupname/API-TEST-IMEI">API TEST IMEI</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-
-                    <!-- Search -->
-                    <div class="position-relative">
-                        <div class="dropdown">
-                            <button class="btn btn-link nav-link text-white px-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end p-3" style="min-width: 300px;">
-                                <input type="text" class="form-control" id="searchInput" placeholder="Search..." autocomplete="off">
-                                <div id="searchResultsContainer" class="search-results mt-2">
-                                    <ul id="searchResults" class="list-unstyled m-0"></ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <main class="main-content py-5">
+    </div>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
+            <a class="navbar-brand flex items-center justify-center" href="#">
+    <img src="logo3.jpg" class="block h-16 w-auto" alt="Your Logo">
+</a>
 
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="public/img/image1.jpg" class="d-block w-100" alt="Imagen 1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="public/img/image2.jpg" class="d-block w-100" alt="Imagen 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="public/img/image3.jpg" class="d-block w-100" alt="Imagen 3">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Anterior</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Siguiente</span>
-                </button>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                          <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        @if (Route::has('register'))
+                            <a class="nav-link" href="{{ route('register') }}">Registrar</a>
+                        @endif
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
+</header>
 
-        <!-- Features Section -->
-        <div class="index-content mb-4 bottom-space">
-            <div class="container">
-                <div class="page-container">
-                    <div class="row g-4">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card h-100 shadow-sm">
-                                <div class="card-body text-center p-4">
-                                    <i class="fas fa-life-ring big-icon text-primary mb-3" style="font-size: 3rem;"></i>
-                                    <h2 class="h4 mb-3">24 Hours Support</h2>
-                                    <p class="text-muted">Support 24 hours / 7 days-a-week. Company Name operates a 24 hour/7 day-a-week email & remote support services that is staffed to handle any issue or question for the systems that we develop or support. Handled directly by our knowledgeable staff ensuring a quick and accurate response</p>
-                                </div>
-                            </div>
-                        </div>
+<!-- Carrossel de Imagens -->
+<div id="carouselExample" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="image/imagem1.png" class="d-block w-100" alt="Imagem 1">
+        </div>
+        <div class="carousel-item">
+            <img src="image/imagem2.png" class="d-block w-100" alt="Imagem 2">
+        </div>
+        <div class="carousel-item">
+            <img src="image/imagem3.png" class="d-block w-100" alt="Imagem 3">
+        </div>
+        <!-- Adicione mais itens conforme necessário -->
+    </div>
+    <!-- Controles de navegação -->
+    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+    
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card h-100 shadow-sm bg-primary text-white">
-                                <div class="card-body text-center p-4">
-                                    <i class="fas fa-tags big-icon mb-3" style="font-size: 3rem;"></i>
-                                    <h2 class="h4 mb-3">Attractive Prices</h2>
-                                    <p>If you find a cheaper price from our competitors but you still want to use Company Name services, please feel free to contact us. All our advertised prices can be negotiated and we can always beat the competition</p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card h-100 shadow-sm">
-                                <div class="card-body text-center p-4">
-                                    <i class="fas fa-info-circle big-icon text-primary mb-3" style="font-size: 3rem;"></i>
-                                    <h2 class="h4 mb-3">Simple Instruction</h2>
-                                    <p class="text-muted">Our instructions are easy to follow and only require that you can enter the unlocking code using your keypad. If you can dial a telephone number, then you can enter the code!</p>
-                                </div>
-                            </div>
-                        </div>
+<!-- Redes Sociais -->
+<div id="redes-sociais" class="social-icons">
+    <a href="#" target="_blank" class="animate__animated animate__bounceIn"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" target="_blank" class="animate__animated animate__bounceIn animate__delay-1s"><i class="fab fa-instagram"></i></a>
+    <a href="#" target="_blank" class="animate__animated animate__bounceIn animate__delay-2s"><i class="fab fa-telegram"></i></a>
+    <!-- Adicione mais ícones conforme necessário -->
+</div>
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card h-100 shadow-sm bg-success text-white">
-                                <div class="card-body text-center p-4">
-                                    <i class="fas fa-lock big-icon mb-3" style="font-size: 3rem;"></i>
-                                    <h2 class="h4 mb-3">Absolutely Safe</h2>
-                                    <p>Completely safe, with no risk to your phone or hardware. No software downloads are required. Alongside unlocking, your money is completely secure as well.</p>
-                                </div>
-                            </div>
-                        </div>
+<!-- Containers de Mensagens -->
+<div id="mensagens" class="message-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="message animate__animated animate__fadeInLeft">
+                    <h3>AUTO API</h3>
+                    <p>🌟 Bem-vindo! 🌟
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card h-100 shadow-sm">
-                                <div class="card-body text-center p-4">
-                                    <i class="fas fa-dollar-sign big-icon text-primary mb-3" style="font-size: 3rem;"></i>
-                                    <h2 class="h4 mb-3">Money Back Guarantee</h2>
-                                    <p class="text-muted">All of the services on our websites are covered by our 100% Money Back Guarantee. We provide such a guarantee to give honest customers the reassurance that the unlocking service they are ordering will be delivered in good faith.</p>
-                                </div>
-                            </div>
-                        </div>
+Olá! Estamos aqui para oferecer serviços incríveis com API automática 24 horas por dia! 🕒✨
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card h-100 shadow-sm bg-info text-white">
-                                <div class="card-body text-center p-4">
-                                    <i class="fas fa-envelope big-icon mb-3" style="font-size: 3rem;"></i>
-                                    <h2 class="h4 mb-3">Expeditious Delivery</h2>
-                                    <p>All unlock codes and unlock confirmations are sent by e-mail to the e-mail address that the customer provides on the order form. We make sure the delivery of unlocking codes is time-efficient. If delayed, we'll inform our clients / resellers via e-mail.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+Na nossa plataforma, você encontra tudo o que precisa de forma rápida e eficiente, com integração contínua e suporte ininterrupto. 🚀💻
+
+Estamos prontos para transformar suas operações com tecnologia avançada e confiável. Não perca tempo, venha descobrir como podemos facilitar o seu dia a dia! 🌐🔧
+
+Conte conosco para soluções que fazem a diferença! 💡💼
+
+</p>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="message animate__animated animate__fadeInUp">
+                    <h3>🌟 Suporte Rápido 24 Horas Por Dia 🌟</h3>
+                    <p>Precisa de ajuda imediata? Estamos aqui para você! 🕒💬
+
+Nosso suporte funciona 24 horas por dia, todos os dias da semana, para resolver suas dúvidas e problemas com agilidade e eficiência. 🚀🔧
+
+Não importa a hora ou o dia, nossa equipe está pronta para garantir que você receba a assistência que merece, sempre com um atendimento ágil e personalizado. 💼🌐
+
+Conte conosco para manter suas operações funcionando sem interrupções! 💪🔍</div>
+            </div>
+            <div class="col-md-4">
+                <div class="message animate__animated animate__fadeInRight">
+                    <h3>🌟 Melhores Preços Para Revendedores 🌟</h3>
+                    <p>Atenção, revendedores! Temos ofertas especiais esperando por você! 💼💲
+
+Na nossa plataforma, garantimos os melhores preços para revendedores que buscam qualidade e economia. 🛍️💰
+
+Oferecemos condições exclusivas e descontos competitivos para que você possa maximizar seus lucros e satisfazer seus clientes. 🚀✨
+
+Não perca essa oportunidade de fazer negócio conosco! Entre em contato hoje mesmo e descubra como podemos ajudar o seu negócio a crescer! 📈🌐</div>
+            </div>
         </div>
+    </div>
+</div>
 
-    </main>
-
-    <!-- Login Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Footer -->
+<footer id="footer">
+    <!-- Footer Icons -->
+    <div class="footer-icons">
+        <a href="#" class="animate__animated animate__bounceIn"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="animate__animated animate__bounceIn animate__delay-1s"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="animate__animated animate__bounceIn animate__delay-2s"><i class="fab fa-linkedin"></i></a>
+        <!-- Adicione mais ícones conforme necessário -->
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="logo3.jpg" class="block h-9 w-auto" alt="Your Logo">
+            </div>
+            <div class="col-md-4">
+                <div class="footer-subscribe">
+                    <h4>Nos siga </h4>
+                    <p>fique por dentro das atualizacoes</p>
                 </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="loginUsername" class="form-label">Usuario</label>
-                            <input type="text" class="form-control" id="loginUsername" placeholder="Ingresa tu usuario">
-                        </div>
-                        <div class="mb-3">
-                            <label for="loginPassword" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="loginPassword" placeholder="Ingresa tu contraseña">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Iniciar Sesión</button>
+            </div>
+            <div class="col-md-4">
+                <div class="footer-connect">
+                    <h4>contatos</h4>
+                    <a href="" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="" target="_blank"><i class="far fa-envelope"></i></a>
                 </div>
             </div>
         </div>
     </div>
+</footer>
 
-    <!-- Reseller Modal -->
-    <div class="modal fade" id="resellerModal" tabindex="-1" aria-labelledby="resellerModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resellerModalLabel">Panel de Reseller</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Usuario</label>
-                            <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario">
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Iniciar Sesión</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer class="bg-body-tertiary text-center">
-        <!-- Grid container -->
-        <div class="container p-4"></div>
-        <!-- Grid container -->
+<!-- Incluir Bootstrap JS e dependências -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-            © 2020 Copyright:
-            <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Script para o Carrossel -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.querySelector('.carousel-inner');
+        const slides = document.querySelectorAll('.carousel-item');
+        const totalSlides = slides.length;
+        let slideIndex = 0;
 
-    <script>
-        // Currency function
-        function setCurrencyTo(currency) {
-            console.log('Currency set to:', currency);
+        function showSlide(n) {
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+            });
+            slides[n].classList.add('active');
         }
 
-        // Search functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('searchInput');
-            const resultsContainer = document.getElementById('searchResults');
-            const searchResultsContainer = document.getElementById('searchResultsContainer');
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % totalSlides;
+            showSlide(slideIndex);
+        }
 
-            if (searchInput) {
-                searchInput.addEventListener('input', function(e) {
-                    const searchTerm = e.target.value.toLowerCase().trim();
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+            showSlide(slideIndex);
+        }
 
-                    if (searchTerm.length > 2) {
-                        searchResultsContainer.classList.add('show');
-                        resultsContainer.innerHTML = '<li class="text-muted">Buscando...</li>';
-
-                        // Simulate search results
-                        setTimeout(() => {
-                            resultsContainer.innerHTML = `
-                                <li><a href="#" class="d-block">Servicio IMEI</a></li>
-                                <li><a href="#" class="d-block">Servicio Remoto</a></li>
-                                <li><a href="#" class="d-block">Soporte 24/7</a></li>
-                                <li><a href="#" class="d-block">Desbloqueo iPhone</a></li>
-                                <li><a href="#" class="d-block">Desbloqueo Samsung</a></li>
-                            `;
-                        }, 500);
-                    } else {
-                        searchResultsContainer.classList.remove('show');
-                        resultsContainer.innerHTML = '';
-                    }
-                });
-            }
+        document.querySelector('.carousel-control-prev').addEventListener('click', () => {
+            prevSlide();
         });
-    </script>
-</body>
 
+        document.querySelector('.carousel-control-next').addEventListener('click', () => {
+            nextSlide();
+        });
+
+        setInterval(nextSlide, 3000); // Intervalo de 3 segundos para trocar automaticamente os slides
+    });
+</script>
+
+</body>
+@include('auth.login2')
 </html>
