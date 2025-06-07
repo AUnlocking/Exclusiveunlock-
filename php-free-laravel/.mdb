@@ -1,11 +1,11 @@
 {
-  "projectName": "php-free-laravel",
+  "projectName": "mdb5-free-standard",
   "meta": {
-    "type": "backend",
-    "starter": "php-free-laravel"
+    "type": "frontend",
+    "starter": "mdb5-free-standard"
   },
   "backend": {
     "platform": "php-laravel"
   },
-  "hash": "77781adf"
+  "hash": "110cfd11"
 }
